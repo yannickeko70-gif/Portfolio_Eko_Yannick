@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eko Yannick — Étudiant Développeur</title>
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' text-anchor='middle' dy='.35em' font-size='70' font-weight='bold' fill='%234338CA'>EY</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="quick-cv-banner"><h2>Eko Yannick</h2><p>Étudiant développeur · Mobile / Web / Game Dev · Douala · yannickeko70@gmail.com · (+237) 655 50 43 97</p></div>
+<div class="cursor-dot" aria-hidden="true"></div><div class="cursor-ring" aria-hidden="true"></div>
+
+<nav id="navbar">
+  <a class="nav-logo" href="#"><span>~/</span>eko-yannick</a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#formation">Formation</a></li>
+  </ul>
+  <div style="display: flex; gap: 1rem; align-items: center;">
+    <label class="theme-picker" for="themeSelect" aria-label="Choisir un thème">
+      <i class="fas fa-palette"></i>
+      <select class="theme-select" id="themeSelect" title="Choisir un thème visuel">
+        <option value="light">Clair Premium</option>
+        <option value="dark">Cyber Dark</option>
+        <option value="neon">Neon Arcade</option>
+        <option value="forest">Forest Green</option>
+        <option value="sunset">Sunset Orange</option>
+        <option value="ocean">Ocean Blue</option>
+      </select>
+    </label>
+    <a href="#contact" class="nav-badge">Me contacter</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+  <div class="hero-inner">
+    <div class="hero-pre"><div class="dot"></div>Étudiant · Développeur · Créateur</div>
+    <div class="availability-hero">Disponible pour stage · Douala</div>
+    <h1>Eko<br><span class="accent">Yannick</span><span style="color:var(--text2); font-weight:300;">_</span></h1>
+    <p class="hero-desc">Étudiant en <strong style="color:var(--text)">Programmation des Applications Mobiles</strong> à l'IUC de Douala. Je conçois des applications, des jeux vidéo et des plateformes web qui résolvent des problèmes concrets.</p>
+    <div class="hero-tags">
+      <span class="tag primary">Mobile Dev</span><span class="tag hot">Game Dev</span><span class="tag">Web Dev</span>
+      <span class="tag hot2">Flutter</span><span class="tag">Java</span><span class="tag">C# / ASP.NET</span>
+      <span class="tag">Unity</span><span class="tag">PHP</span><span class="tag hot">HTML/CSS/JS</span><span class="tag">Android Studio</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-main">→ Voir mes projets</a>
+      <a href="mailto:yannickeko70@gmail.com" class="btn-ghost">yannickeko70@gmail.com</a>
+      <a id="dlHero" class="btn-download" href="doc/CV Eko Yannick 2.pdf" download><svg viewBox="0 0 24 24"><path d="M12 3v13M7 11l5 5 5-5"/><path d="M5 21h14"/></svg><span>Télécharger CV</span></a>
+      <button type="button" id="quickCvBtn" class="btn-download btn-print"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/></svg><span>CV rapide</span></button>
+    </div>
+  </div>
+  <div class="hero-photo-wrap">
+    <div class="hero-photo-frame"><div class="hero-photo-inner"><img src="img/Yannick.jpg" alt="Eko Yannick" /></div><span class="photo-corner tl"></span><span class="photo-corner tr"></span><span class="photo-corner bl"></span><span class="photo-corner br"></span></div>
+    <div class="photo-label">Eko Yannick · IUC Douala</div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="s-label">À propos</div>
+  <h2 class="s-title">Qui suis-<span class="c">je</span> ?</h2>
+  <div class="about-grid">
+    <div>
+      <div class="profile-box reveal">
+        <div class="profile-top"><div class="profile-avatar"><img src="Yannick.jpg" alt="Photo de profil Eko Yannick"></div><div><div class="profile-name">Eko Yannick</div><div class="profile-role">// Étudiant Développeur</div><div class="profile-school">IUC Logbessou — TIPAM Niveau 2</div></div></div>
+        <div class="info-row"><span class="info-icon">✉</span><span class="info-label">Email</span><span class="info-val"><a href="mailto:yannickeko70@gmail.com">yannickeko70@gmail.com</a></span></div>
+        <div class="info-row"><span class="info-icon">☏</span><span class="info-label">Téléphone</span><span class="info-val"><a href="tel:+237655504397">(+237) 655 50 43 97</a></span></div>
+        <div class="info-row"><span class="info-icon">◎</span><span class="info-label">Localisation</span><span class="info-val">Douala, Cameroun</span></div>
+        <div class="info-row"><span class="info-icon">🎓</span><span class="info-label">Cycle</span><span class="info-val">TIPAM — Bac+2 (en cours)</span></div>
+        <div class="info-row"><span class="info-icon">⚡</span><span class="info-label">Disponible</span><span class="info-val" style="color:var(--teal)">Stage / Projet académique / Projet professionnel</span></div>
+      </div>
+      <div style="margin-top:2rem;" class="reveal"><div class="s-label" style="margin-bottom:0.8rem;">Langues</div><div class="lang-grid"><div class="lang-item"><div class="lang-name">Français</div><div class="lang-stars">★★★★</div></div><div class="lang-item"><div class="lang-name">Anglais</div><div class="lang-stars">★★</div></div></div></div>
+      <div style="margin-top:2rem;" class="reveal"><div class="s-label" style="margin-bottom:0.8rem;">Centres d'intérêt</div><div class="interests-row"><span class="interest-chip">⚽ Football</span><span class="interest-chip">🏀 Basketball</span><span class="interest-chip">🏊 Natation</span><span class="interest-chip">🎮 Jeu vidéo</span><span class="interest-chip">🎌 Anime</span></div></div>
+    </div>
+    <div class="about-bio reveal">
+      <p>Étudiant en <strong>Technologie de l'Informatique, spécialité Programmation des Applications Mobiles (TIPAM)</strong> à l'Institut Universitaire de la Côte (IUC), je suis passionné par la création de solutions numériques innovantes.</p>
+      <p>Depuis le début de ma formation, j'ai développé des projets couvrant un large spectre : <strong>jeux vidéo avec IA</strong>, <strong>applications IDE</strong>, <strong>plateformes web sécurisées</strong> et <strong>applications mobiles</strong>. Chaque projet est pour moi une opportunité d'approfondir mes compétences et de relever de nouveaux défis techniques.</p>
+      <p>Déterminé, sérieux et autonome, je cherche à rejoindre des équipes ambitieuses où je pourrai contribuer activement tout en continuant à grandir en tant que développeur.</p>
+      <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:2rem;">
+        <div style="text-align:center; padding:1.2rem 1.5rem; background:var(--card); border:1px solid var(--border); flex:1; min-width:100px;"><div style="font-family:var(--ff-head); font-size:2.2rem; font-weight:800; color:var(--indigo);">6+</div><div style="font-family:var(--ff-mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text3); text-transform:uppercase;">Projets réalisés</div></div>
+        <div style="text-align:center; padding:1.2rem 1.5rem; background:var(--card); border:1px solid var(--border); flex:1; min-width:100px;"><div style="font-family:var(--ff-head); font-size:2.2rem; font-weight:800; color:var(--violet);">7</div><div style="font-family:var(--ff-mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text3); text-transform:uppercase;">Langages maîtrisés</div></div>
+        <div style="text-align:center; padding:1.2rem 1.5rem; background:var(--card); border:1px solid var(--border); flex:1; min-width:220px;"><div style="font-family:var(--ff-head); font-size:2.2rem; font-weight:800; color:var(--teal);">Bac+2</div><div style="font-family:var(--ff-mono); font-size:0.65rem; letter-spacing:0.1em; color:var(--text3); text-transform:uppercase;">En cours (TIPAM)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--bg);">
+  <div class="s-label">Compétences</div>
+  <h2 class="s-title">Ma <span class="v">stack</span> technique</h2>
+  <p class="s-sub">Langages, frameworks, logiciels et outils que j'utilise au quotidien dans mes projets académiques et personnels.</p>
+  <div class="skills-grid reveal">
+    <div class="skill-group"><div class="sg-icon">💻</div><div class="sg-title">Langages de programmation</div><div class="sg-sub">// Languages</div><div class="skill-pills"><span class="skill-pill primary">HTML/CSS</span><span class="skill-pill primary">JavaScript</span><span class="skill-pill primary">Java</span><span class="skill-pill secondary">C# (ASP.NET)</span><span class="skill-pill secondary">ADO.NET</span><span class="skill-pill">Flutter (Dart)</span><span class="skill-pill">C</span><span class="skill-pill">PHP</span><span class="skill-pill">VBA</span></div></div>
+    <div class="skill-group"><div class="sg-icon">🛠️</div><div class="sg-title">Outils & Logiciels</div><div class="sg-sub">// Tools</div><div class="skill-pills"><span class="skill-pill primary">Visual Studio</span><span class="skill-pill primary">VS Code</span><span class="skill-pill">Android Studio</span><span class="skill-pill secondary">Unity</span><span class="skill-pill">NetBeans</span><span class="skill-pill">Suite Office</span></div></div>
+    <div class="skill-group"><div class="sg-icon">🎮</div><div class="sg-title">Domaines de création</div><div class="sg-sub">// Domains</div><div class="skill-pills"><span class="skill-pill primary">Dev Mobile</span><span class="skill-pill secondary">Game Dev (2D/3D)</span><span class="skill-pill primary">Web Frontend</span><span class="skill-pill">Web Backend</span><span class="skill-pill secondary">IA & Algorithmes</span><span class="skill-pill">Sécurité Web</span><span class="skill-pill">UX/UI Design</span></div></div>
+  </div>
+  <div class="skill-meters reveal" aria-label="Niveaux de compétences animés">
+    <div class="skill-meter"><div class="skill-meter-top"><span>PHP</span><span class="skill-value" data-target="70">0%</span></div><div class="skill-track"><div class="skill-fill" style="--level:70%"></div></div></div>
+    <div class="skill-meter"><div class="skill-meter-top"><span>C# / ASP.NET</span><span class="skill-value" data-target="60">0%</span></div><div class="skill-track"><div class="skill-fill" style="--level:60%"></div></div></div>
+    <div class="skill-meter"><div class="skill-meter-top"><span>JavaScript</span><span class="skill-value" data-target="65">0%</span></div><div class="skill-track"><div class="skill-fill" style="--level:65%"></div></div></div>
+    <div class="skill-meter"><div class="skill-meter-top"><span>Flutter / Dart</span><span class="skill-value" data-target="55">0%</span></div><div class="skill-track"><div class="skill-fill" style="--level:55%"></div></div></div>
+  </div>
+  <div class="terminal-setup reveal">
+    <div class="terminal-bar"><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-title">stack favorite / mon setup</span></div>
+    <div class="terminal-body">
+      <div><span class="prompt">yannick@portfolio</span>:~$ cat setup.json</div>
+      <div>{ <span class="key">"editor"</span>: <span class="val">"VS Code + Visual Studio"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="key">"mobile"</span>: <span class="val">"Flutter · Android Studio"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="key">"game_dev"</span>: <span class="val">"Unity · C#"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="key">"web"</span>: <span class="val">"HTML · CSS · JS · PHP · ASP.NET"</span> }</div>
+      <div><span class="prompt">status</span>: disponible_pour_stage <span class="terminal-cursor"></span></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ===== SECTION PROJETS AVEC IMAGES ===== -->
+<section class="projects" id="projects">
+  <div class="s-label">Projets</div>
+  <h2 class="s-title">Ce que j'ai <span style="color:var(--accent);">construit</span></h2>
+  <p class="s-sub">7 projets académiques, personnels et collectifs — chacun avec ses propres défis techniques, ses solutions, et ses apprentissages — découvrez à quoi ils ressemblent grâce aux captures ci-dessous.</p>
+  <div class="projects-list">
+
+    <!-- Projet 1 : THE WAR OF SQUARES -->
+    <div class="proj-card">
+      <div class="proj-image">
+        <img src="img/THE_WAR_OF_SQUARES.png" alt="The War of Squares - jeu de plateau d dame avec IA">
+      </div>
+      <div class="proj-content">
+        <div class="proj-num">01</div>
+        <div class="proj-sub">// Jeu vidéo · Intelligence Artificielle</div>
+        <div class="proj-title">THE WAR OF SQUARES</div>
+        <div class="proj-desc">Conception et réalisation d'un jeu vidéo de Dame en mode hybride 2D/3D intégrant une intelligence artificielle comme adversaire. Le joueur peut affronter un bot doté d'un algorithme de prise de décision stratégique, offrant une expérience de jeu complète et évolutive.</div>
+        <div class="proj-techs">
+          <span class="proj-tech">
+            <i class="fab fa-unity"></i>
+            Unity
+          </span>
+          <span class="proj-tech">
+            <i class="fas fa-code"></i>
+            C#
+          </span>
+          <span class="proj-tech">
+            <i class="fas fa-microchip"></i>
+            IA / Minimax
+          </span>
+          <span class="proj-tech">
+            <i class="fas fa-paintbrush"></i>
+            Game Design
+          </span>
+        </div>
+        <a class="proj-link" href="#"><i class="fab fa-github"></i> Voir le code</a>
+        <div class="proj-badge">Game Dev</div>
+      </div>
+    </div>
+
+    <!-- Projet 2 : ALGOCRAFT -->
+    <div class="proj-card">
+      <div class="proj-image">
+        <img src="img/ALGOCRAFT.png" alt="Algocraft IDE éditeur algorithmique">
+      </div>
+      <div class="proj-content">
+        <div class="proj-num">02</div>
+        <div class="proj-sub">// Application Desktop · Algorithmique</div>
+        <div class="proj-title">ALGOCRAFT</div>
+        <div class="proj-desc">Développement d'un environnement de développement intégré (IDE) dédié à la conception et la création d'algorithmes. ALGOCRAFT permet aux utilisateurs d'écrire, visualiser et exécuter des algorithmes dans un environnement graphique intuitif — outil pensé pour l'apprentissage et l'enseignement de la logique algorithmique.</div>
+        <div class="proj-techs">
+          <span class="proj-tech"><i class="fas fa-code"></i>C#</span><span class="proj-tech"><i class="fab fa-windows"></i>Visual Studio</span><span class="proj-tech"><i class="fas fa-laptop-code"></i>IDE Design</span><span class="proj-tech"><i class="fas fa-brain"></i>Algorithmique</span>
+        </div>
+        <a class="proj-link" href="#"><i class="fab fa-github"></i> Voir le code</a>
+        <div class="proj-badge">Desktop App</div>
+      </div>
+    </div>
+
+    <!-- Projet 3 : Plateforme de Suivi des Encadrements -->
+    <div class="proj-card">
+      <div class="proj-image">
+        <img src="https://placehold.co/600x400/2d3748/white?text=Suivi+Encadrements" alt="Dashboard suivi encadrements académiques">
+      </div>
+      <div class="proj-content">
+        <div class="proj-num">03</div>
+        <div class="proj-sub">// Plateforme Web · Gestion académique</div>
+        <div class="proj-title">Plateforme de Suivi des Encadrements</div>
+        <div class="proj-desc">Développement d'une plateforme web dédiée au suivi des encadrements des étudiants de 3iac. Le système permet aux enseignants de gérer les sessions d'encadrement, aux étudiants de consulter leur progression, et à l'administration de superviser l'ensemble du processus de manière centralisée.</div>
+        <div class="proj-techs">
+          <span class="proj-tech"><i class="fab fa-php"></i>PHP</span><span class="proj-tech"><i class="fab fa-html5"></i>HTML/CSS/JS</span><span class="proj-tech"><i class="fas fa-database"></i>Base de données</span><span class="proj-tech"><i class="fas fa-users"></i>Gestion utilisateurs</span>
+        </div>
+        <a class="proj-link" href="https://github.com/YannickEko" target="_blank"><i class="fab fa-github"></i> En Cours</a>
+        <div class="proj-badge">Web App</div>
+      </div>
+    </div>
+
+    <!-- Projet 4 : CYBERTRACK -->
+    <div class="proj-card">
+      <div class="proj-image">
+        <img src="img/CYBERTRACK.png" alt="Cybertrack interface signalement cyber">
+      </div>
+      <div class="proj-content">
+        <div class="proj-num">04</div>
+        <div class="proj-sub">// Application Web · Sécurité & Cybersécurité</div>
+        <div class="proj-title">CYBERTRACK</div>
+        <div class="proj-desc">Développement d'une application web sécurisée pour le signalement de contenus illégaux en ligne. CYBERTRACK offre un système de dépôt de signalements avec authentification renforcée, gestion des rôles (utilisateur, modérateur, administrateur) et traçabilité des actions — un outil civique à impact réel.</div>
+        <div class="proj-techs">
+          <span class="proj-tech"><i class="fas fa-code"></i>C# / ASP.NET</span><span class="proj-tech"><i class="fas fa-database"></i>ADO.NET</span><span class="proj-tech"><i class="fas fa-shield-alt"></i>Sécurité Web</span><span class="proj-tech"><i class="fas fa-user-tag"></i>Gestion des rôles</span><span class="proj-tech"><i class="fas fa-server"></i>SQL Server</span>
+        </div>
+        <a class="proj-link" href="https://github.com/YannickEko" target="_blank"><i class="fab fa-github"></i>Voir le code</a>
+        <div class="proj-badge">Web Sécurisé</div>
+      </div>
+    </div>
+
+    <!-- Projet 5 : SchoolBadge -->
+    <div class="proj-card">
+      <div class="proj-image">
+        <img src="img/SCHOOLBADGE.png" alt="SchoolBadge impression cartes scolaires">
+      </div>
+      <div class="proj-content">
+        <div class="proj-num">05</div>
+        <div class="proj-sub">// Application Desktop · Gestion scolaire</div>
+        <div class="proj-title">SchoolBadge</div>
+        <div class="proj-desc">Application complète permettant la saisie, la gestion et l'impression automatisée des cartes scolaires des élèves. Intègre une interface de gestion des données élèves, une prévisualisation en temps réel des cartes générées et un module d'impression par lots.</div>
+        <div class="proj-techs">
+          <span class="proj-tech"><i class="fas fa-file-excel"></i>JAVA</span><span class="proj-tech"><i class="fas fa-file-alt"></i>JUnit</span><span class="proj-tech"><i class="fas fa-robot"></i>Automatisation</span><span class="proj-tech"><i class="fas fa-print"></i>Impression</span>
+        </div>
+        <a class="proj-link" href="#"><i class="fab fa-github"></i> Voir le code</a>
+        <div class="proj-badge">Desktop App</div>
+      </div>
+    </div>
+
+    <!-- Projet 6 : METRO DASH -->
+    <div class="proj-card">
+      <div class="proj-image">
+        <img src="img/METRODASH.png" alt="Metro Dash jeu runner urbain"><br>
+        <img src="img/METRODASH_2.png" alt="Metro Dash jeu runner urbain">
+      </div>
+      <div class="proj-content">
+        <div class="proj-num">06</div>
+        <div class="proj-sub">// Jeu Vidéo Mobile · Runner Game</div>
+        <div class="proj-title">METRO DASH</div>
+        <div class="proj-desc">Développement d'un jeu vidéo mobile inspiré de Subway Surfers, adapté dans un univers plus urbain avec de nouvelles fonctionnalités. Metro Dash propose un gameplay runner infini avec obstacles dynamiques, collectibles, niveaux de difficulté progressifs et animations fluides optimisées pour desktop et mobile.</div>
+        <div class="proj-techs">
+          <span class="proj-tech"><i class="fas fa-code"></i>C#</span><span class="proj-tech"><i class="fab fa-windows"></i>Visual Studio</span><span class="proj-tech"><i class="fab fa-unity"></i>Unity</span><span class="proj-tech"><i class="fas fa-sync-alt"></i>Game Loop</span><span class="proj-tech"><i class="fas fa-film"></i>Animations</span><span class="proj-tech"><i class="fas fa-mobile-alt"></i>Mobile/Desktop</span>
+        </div>
+        <a class="proj-link" href="#"><i class="fab fa-github"></i>En cours</a>
+        <div class="proj-badge">Mobile Game</div>
+      </div>
+    </div>
+
+    <!-- Projet 7 : Gestion PME -->
+    <div class="proj-card">
+      <div class="proj-image">
+        <img src="img/Gestion_PME.png" alt="gestion PME">
+      </div>
+      <div class="proj-content">
+        <div class="proj-num">07</div>
+        <div class="proj-sub">// Plateforme Web · Gestion PME</div>
+        <div class="proj-title">Plateforme de Gestion d'entreprise (BizControl)</div>
+        <div class="proj-desc">Développement d'une plateforme web pour la gestion d'une PME, intégrant un tableau de bord centralisé avec suivi des ventes, gestion des stocks, facturation automatisée et tableau des dépenses. BizControl propose une interface intuitive, des accès multi-rôles (admin, comptable, commercial), des rapports personnalisables et une synchronisation en temps réel optimisée pour tous les navigateurs modernes.</div>
+        <div class="proj-techs">
+          <span class="proj-tech"><i class="fab fa-php"></i>PHP</span><span class="proj-tech"><i class="fas fa-code"></i>HTML/CSS/JS</span><span class="proj-tech"><i class="fas fa-database"></i>PostgreSQL</span><span class="proj-tech"><i class="fab fa-windows"></i>VS Code</span><span class="proj-tech"><i class="fas fa-chart-line"></i>Dashboard</span><span class="proj-tech"><i class="fas fa-users"></i>Multi-rôles</span>
+        </div>
+        <a class="proj-link" href="#"><i class="fab fa-github"></i> En cours</a>
+        <div class="proj-badge">Web App PME</div>
+      </div>
+    </div>
+
+    <!-- Projet 8 : Portfolio Créatif -->
+    <div class="proj-card">
+      <div class="proj-image">
+        <img src="LUMIS.png" alt="portfolio créatif LUMIS">
+      </div>
+      <div class="proj-content">
+        <div class="proj-num">08</div>
+        <div class="proj-sub">// Plateforme web · Portfolio créatif LUMIS</div>
+        <div class="proj-title">Réalisation d'un portfolio créatif pour une agence digitale</div>
+        <div class="proj-desc">Création d'un site WordPress complet pour une agence créative avec thème enfant sur mesure, intégration d'une boutique WooCommerce, gestion des témoignages, portfolio dynamique et optimisation SEO. Projet réalisé dans le cadre du Laboratoire 2 du cours "Outils Complémentaires à la Programmation Web".</div>
+        <div class="proj-techs">
+          <span class="proj-tech"><i class="fab fa-wordpress"></i>WordPress</span>
+          <span class="proj-tech"><i class="fab fa-woo"></i>WooCommerce</span>
+          <span class="proj-tech"><i class="fab fa-php"></i>PHP</span>
+          <span class="proj-tech"><i class="fab fa-css3-alt"></i>CSS3</span>
+          <span class="proj-tech"><i class="fab fa-js"></i>JavaScript</span>
+          <span class="proj-tech"><i class="fab fa-git-alt"></i>Git/GitHub</span>
+        </div>
+        <a class="proj-link" href="#"><i class="fab fa-github"></i> Voir le dépôt</a>
+        <div class="proj-badge">WordPress · WooCommerce</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- FORMATION -->
+<section class="formation" id="formation">
+  <div class="s-label">Formation</div>
+  <h2 class="s-title">Mon <span class="l">parcours</span> académique</h2>
+  <p class="s-sub">Un chemin structuré alliant informatique de gestion et programmation avancée.</p>
+  <div class="formation-grid reveal">
+    <div class="form-card main"><div class="form-year">En cours · 2024 — Présent</div><div class="form-degree">Diplôme d'Étude Collégiale (DEC)</div><div class="form-spec">Bac+2 · TIPAM — Programmation des Applications Mobiles</div><div class="form-school">Institut Universitaire de la Côte (IUC) — Logbessou, Douala</div><span class="form-status status-progress">🟢 En cours — Niveau 2</span></div>
+    <div class="form-card alt"><div class="form-year">2023 — 2024</div><div class="form-degree">Baccalauréat Technique</div><div class="form-spec">Fiscalité & Informatique de Gestion</div><div class="form-school">Lycée Technique de Bertoua</div><span class="form-status status-done">✓ Obtenu</span></div>
+    <div class="form-card"><div class="form-year">2020 — 2021</div><div class="form-degree">Brevet d'Étude Premier Cycle (BEPC)</div><div class="form-spec">Enseignement général bilingue</div><div class="form-school">Collège Bilingue Teerenstra</div><span class="form-status status-done">✓ Obtenu</span></div>
+    <div class="form-card" style="background:var(--bg3); border:1px dashed var(--border2); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:3rem 2rem;"><div style="font-family:var(--ff-mono); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text3); margin-bottom:1rem;">Objectif</div><div style="font-family:var(--ff-head); font-size:1.1rem; font-weight:700; color:var(--teal); margin-bottom:0.5rem;">Licence · Master · Spécialisation dans l'une de mes passions</div><div style="font-size:0.82rem; color:var(--text3); line-height:1.7;">Poursuite en génie logiciel, développement mobile, apprentissage de création des IA, création de jeux vidéo plus poussés ou cybersécurité après l'obtention du DEC.</div></div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="s-label">Contact</div>
+  <h2 class="s-title">Travaillons <span class="c">ensemble</span></h2>
+  <div class="contact-wrap">
+    <div class="contact-left reveal">
+      <p class="contact-blurb">Tu as un projet académique ou professionnel collaboratif, une opportunité de stage, ou simplement envie d'échanger sur la tech et le développement ? N'hésite pas à me contacter, je suis l'Homme de la situation — je réponds rapidement.</p>
+      <div class="contact-items">
+        <div class="contact-item"><span class="ci-icon">✉</span><div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:yannickeko70@gmail.com">yannickeko70@gmail.com</a></div></div></div>
+        <div class="contact-item"><span class="ci-icon">☏</span><div><div class="ci-label">Téléphone / WhatsApp</div><div class="ci-val"><a href="tel:+237655504397">(+237) 655 50 43 97</a></div></div></div>
+        <div class="contact-item"><span class="ci-icon"><i class="fab fa-github"></i></span><div><div class="ci-label">GitHub</div><div class="ci-val"><a href="https://github.com/YannickEko" target="_blank">github.com/YannickEko</a></div></div></div>
+        <div class="contact-item"><span class="ci-icon"><i class="fab fa-linkedin"></i></span><div><div class="ci-label">LinkedIn</div><div class="ci-val"><a href="https://www.linkedin.com/in/yannick-eko-46ab73265/" target="_blank">www.linkedin.com/in/yannick-eko-46ab73265</a></div></div></div>
+        <div class="contact-item"><span class="ci-icon">◎</span><div><div class="ci-label">Localisation</div><div class="ci-val"><span>Douala, Cameroun</span></div></div></div>
+        <div class="contact-item"><span class="ci-icon">🎓</span><div><div class="ci-label">Institution</div><div class="ci-val"><span>IUC Logbessou · TIPAM N2</span></div></div></div>
+      </div>
+      <div style="margin-top:2rem; padding:1.5rem; background:var(--card); border:1px solid var(--border); border-left:3px solid var(--teal);"><div style="font-family:var(--ff-mono); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--teal); margin-bottom:0.6rem;">Disponibilité</div><div style="font-size:0.88rem; color:var(--text2); line-height:1.75;">Disponible pour des <strong style="color:var(--text)">projets académiques ou professionnel collaboratifs</strong>, des <strong style="color:var(--text)">stages</strong> et des <strong style="color:var(--text)">petits projets freelance</strong>.</div></div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-heading">Envoyer un message</div>
+      <form action="mailto:yannickeko70@gmail.com?subject=Nouveau%20message%20de%20portfolio" method="GET" enctype="text/plain" onsubmit="return confirm('Votre message va être préparé. Cliquez sur Envoyer dans votre client mail.')">
+        <div class="fg-row">
+          <div class="fg"><label>Prénom</label><input type="text" name="firstname" placeholder="Yannick"/></div>
+          <div class="fg"><label>Nom</label><input type="text" name="lastname" placeholder="Eko"/></div>
+        </div>
+        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="yannick@exemple.com" required/></div>
+        <div class="fg"><label>Objet</label><select name="subject"><option value="">Sélectionner un objet...</option><option>Projet académique collaboratif</option><option>Projet professionnel collaboratif</option><option>Proposition de stage</option><option>Projet freelance</option><option>Question technique</option><option>Autre</option></select></div>
+        <div class="fg"><label>Message</label><textarea name="body" placeholder="Décris ton projet ou ta demande..."></textarea></div>
+        <button type="submit" class="submit"><span>Envoyer le message →</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">eko-yannick.dev</div>
+  <div class="f-copy">© 2026 · Eko Yannick · Tous droits réservés</div>
+  <div class="f-links">
+    <a href="mailto:yannickeko70@gmail.com">Email</a>
+    <a href="tel:+237655504397">WhatsApp</a>
+    <a href="https://github.com/YannickEko" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/yannick-eko-46ab73265/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<!-- ══ LOADER ══ -->
+<div id="page-loader">
+  <div class="loader-logo-wrap">
+    <div class="loader-logo-text">eko<span>.</span>yannick</div>
+    <div class="loader-tagline">Portfolio — Développeur</div>
+  </div>
+  <div class="loader-bar-wrap">
+    <div class="loader-track">
+      <div class="loader-fill" id="loaderFill"></div>
+    </div>
+    <div class="loader-meta">
+      <span id="loaderStatus">Initialisation…</span>
+      <span class="loader-pct" id="loaderPct">0%</span>
+    </div>
+  </div>
+  <div class="loader-dots">
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+  </div>
+</div>
+
+<a id="dlFloat" class="cv-float" href="doc/CV Eko Yannick 2.pdf" download><svg viewBox="0 0 24 24"><path d="M12 3v13M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>Télécharger CV</a>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
