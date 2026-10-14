@@ -1,6 +1,26 @@
 (() => {
   'use strict';
 
+  // ---------- API du back office ----------
+  // En local, l'API tourne sur le port 5000.
+  // En ligne : remplace VOTRE-API par l'adresse de ton API déployée (étape de déploiement).
+  const LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);
+  const API_URL = LOCAL ? 'http://localhost:5000/api' : 'https://VOTRE-API.onrender.com/api';
+  const API_READY = !API_URL.includes('VOTRE-API');
+
+  async function apiFetch(path, options = {}, timeout = 15000) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeout);
+    try {
+      const res = await fetch(API_URL + path, { ...options, signal: controller.signal });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.message || 'Erreur serveur.');
+      return data;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
   // ---------- Thèmes ----------
   const THEMES = ['noir', 'blanc', 'beige'];
   const COLORS = { noir: '#0d0d0d', blanc: '#ffffff', beige: '#e9e0cf' };
@@ -96,9 +116,31 @@
       <button class="btn btn-sm" type="button" data-filter-reset>Voir tous les projets</button>
     </div>`;
 
-  const projects = Array.isArray(window.PROJECTS) ? window.PROJECTS : [];
-  // category peut être une chaîne ('web') ou un tableau (['desktop', 'gaming'])
-  const cats = (p) => [].concat(p.category || []).map((c) => String(c).toLowerCase());
+  // Met les projets (projects.js ou API) dans un format unique
+  const toList = (v) => [].concat(v || []).map((x) => String(x).trim()).filter(Boolean);
+    // Les images vivent dans le dossier img/ du portfolio.
+  // On accepte aussi "/projects/X.png" ou "X.png" venant de l'admin.
+  const imagePath = (src) => {
+    const s = String(src || '').trim();
+    if (!s) return '';
+    if (/^https?:\/\//i.test(s)) return s;
+    return 'img/' + s.split('/').pop();
+  };
+
+  const normalize = (p) => ({
+    title: String(p.title || ''),
+    description: String(p.description || ''),
+    category: toList(p.category).map((c) => c.toLowerCase()),
+    stack: toList(p.stack),
+    image: imagePath(p.image),
+    live: String(p.live || ''),
+    repo: String(p.repo || ''),
+    status: p.status === 'en_cours' ? 'en_cours' : 'termine',
+  });
+
+  // Affichage immédiat avec projects.js ; l'API prend le relais ensuite
+  let projects = (Array.isArray(window.PROJECTS) ? window.PROJECTS : []).map(normalize);
+  const cats = (p) => p.category;
   let current = 'all';
 
   function renderProject(p, i) {
@@ -160,6 +202,15 @@
   const grid = document.getElementById('projects-grid');
   const filterBtns = document.querySelectorAll('[data-filter]');
 
+  function updateCounts() {
+    filterBtns.forEach((b) => {
+      const key = b.dataset.filter;
+      const n = key === 'all' ? projects.length : projects.filter((p) => cats(p).includes(key)).length;
+      const count = b.querySelector('.count');
+      if (count) count.textContent = n;
+    });
+  }
+
   function renderGrid() {
     const list = current === 'all' ? projects : projects.filter((p) => cats(p).includes(current));
     grid.innerHTML = list.length ? list.map(renderProject).join('') : EMPTY;
@@ -172,21 +223,64 @@
     renderGrid();
   }
 
-  if (grid) {
-    filterBtns.forEach((b) => {
-      const key = b.dataset.filter;
-      const n = key === 'all' ? projects.length : projects.filter((p) => cats(p).includes(key)).length;
-      const count = b.querySelector('.count');
-      if (count) count.textContent = n;
-      b.addEventListener('click', () => setFilter(key));
-    });
-    grid.addEventListener('click', (e) => { if (e.target.closest('[data-filter-reset]')) setFilter('all'); });
-    setFilter('all');
+  // Remplace les projets par ceux du back office (seulement s'ils sont différents)
+  async function syncProjects() {
+    if (!API_READY || !grid) return;
+    try {
+      const data = await apiFetch('/public/projects');
+      if (!Array.isArray(data) || data.length === 0) return;
+
+      const fresh = data.map(normalize);
+      if (JSON.stringify(fresh) === JSON.stringify(projects)) return;
+
+      projects = fresh;
+      updateCounts();
+      setFilter(current);
+    } catch (err) {
+      // API éteinte ou lente : on garde projects.js
+      console.warn('[portfolio] API indisponible, projets locaux conservés.', err.message);
+    }
   }
 
+    if (grid) {
+    filterBtns.forEach((b) => b.addEventListener('click', () => setFilter(b.dataset.filter)));
+    grid.addEventListener('click', (e) => { if (e.target.closest('[data-filter-reset]')) setFilter('all'); });
+
+    // Image introuvable : on affiche le nom du projet au lieu d'une image cassée
+    grid.addEventListener(
+      'error',
+      (e) => {
+        const img = e.target;
+        if (!(img instanceof HTMLImageElement)) return;
+        const shot = img.closest('.shot');
+        if (!shot) return;
+        shot.classList.add('shot-empty');
+        const label = document.createElement('span');
+        label.textContent = img.alt.replace(/^Capture d'écran du projet /, '');
+        img.replaceWith(label);
+      },
+      true
+    );
+
+    updateCounts();
+    setFilter('all');
+    syncProjects();
+  }
+
+  // ---------- Comptage des visites (une fois par session) ----------
+  function trackVisit() {
+    if (!API_READY) return;
+    try {
+      // Pour ne pas compter tes propres visites : localStorage.setItem('no-stats', '1')
+      if (localStorage.getItem('no-stats') === '1') return;
+      if (sessionStorage.getItem('visit-counted')) return;
+      sessionStorage.setItem('visit-counted', '1');
+    } catch (e) {}
+    fetch(`${API_URL}/public/view`, { method: 'POST', keepalive: true }).catch(() => {});
+  }
+  trackVisit();
+
   // ---------- Formulaire de contact ----------
-  // L'envoi réel (email + back office) est branché à l'étape suivante.
-  const CONTACT_ENDPOINT = '/api/contact';
   const form = document.getElementById('contact-form');
 
   if (form) {
@@ -203,21 +297,28 @@
 
       say('Envoi en cours…');
       submit.disabled = true;
+      // L'offre gratuite de l'hébergeur endort l'API : le premier envoi peut être long
+      const slow = setTimeout(() => say('Le serveur se réveille, encore quelques secondes…'), 5000);
 
       try {
-        const res = await fetch(CONTACT_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(new FormData(form))),
-        });
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data.message || "Le message n'a pas pu être envoyé.");
+        if (!API_READY) throw new TypeError('API non configurée');
+        await apiFetch(
+          '/public/contact',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.fromEntries(new FormData(form))),
+          },
+          45000
+        );
         form.reset();
         say('Message envoyé. Je te réponds rapidement.', 'success');
       } catch (err) {
-        const reason = err instanceof TypeError ? 'Impossible de joindre le serveur.' : err.message;
+        const network = err instanceof TypeError || err.name === 'AbortError';
+        const reason = network ? 'Impossible de joindre le serveur.' : err.message;
         say(`${reason} Tu peux aussi écrire à yannickeko70@gmail.com.`, 'error');
       } finally {
+        clearTimeout(slow);
         submit.disabled = false;
       }
     });

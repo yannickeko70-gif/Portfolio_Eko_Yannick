@@ -45,7 +45,7 @@ window.PROJECTS = [
     description: 'Jeu de course infinie inspiré de Subway Surfers, pour mobile et desktop.',
     category: ['gaming', 'desktop'],
     stack: ['Unity', 'C#'],
-    image: 'img/METRODASH.png',
+    image: 'img/METRODASH_2.png',
     live: '', repo: '', status: 'en_cours'
   },
   {
