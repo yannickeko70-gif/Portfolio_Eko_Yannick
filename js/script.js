@@ -276,9 +276,113 @@
       if (sessionStorage.getItem('visit-counted')) return;
       sessionStorage.setItem('visit-counted', '1');
     } catch (e) {}
-    fetch(`${API_URL}/public/view`, { method: 'POST', keepalive: true }).catch(() => {});
+    fetch(`${API_URL}/public/view`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        referrer: document.referrer
+      }),
+      keepalive: true
+    }).catch(() => {});
   }
   trackVisit();
+
+  
+function trackEvent(type, label = '') {
+  if (!API_READY) return;
+
+  try {
+    if (localStorage.getItem('no-stats') === '1') return;
+  } catch (e) {}
+
+  fetch(`${API_URL}/public/event`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ type, label }),
+    keepalive: true
+  }).catch(() => {});
+}
+
+const projectsGrid = document.getElementById('projects-grid');
+
+if (projectsGrid) {
+  projectsGrid.addEventListener('click', (event) => {
+    const link = event.target.closest('a');
+
+    if (!link) return;
+
+    const card = link.closest(
+      '.project-card, .project, [data-project]'
+    );
+
+    if (!card) return;
+
+    const titleElement = card.querySelector(
+      '[data-project-title], .project-title, h3, h2'
+    );
+
+    const title = (
+      titleElement?.textContent ||
+      card.dataset.projectTitle ||
+      ''
+    ).trim();
+
+    if (title) {
+      trackEvent('project', title);
+    }
+  });
+}
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[download]');
+
+  if (!link) return;
+
+  const href = link.getAttribute('href') || '';
+
+  if (href.includes('CV-Yannick-EKO.pdf')) {
+    trackEvent('cv', 'cv');
+  }
+});
+
+
+function trackSectionViews() {
+  const sections = document.querySelectorAll(
+    'section[id="apropos"], section[id="services"], ' +
+    'section[id="competences"], section[id="projets"], ' +
+    'section[id="formation"], section[id="objectifs"], ' +
+    'section[id="contact"]'
+  );
+
+  if (!('IntersectionObserver' in window)) return;
+
+  const trackedSections = new Set();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const id = entry.target.id;
+
+      if (trackedSections.has(id)) return;
+
+      trackedSections.add(id);
+      trackEvent('section', id);
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  sections.forEach((section) => observer.observe(section));
+}
+
+trackSectionViews();
+
+
 
   // ---------- Formulaire de contact ----------
   const form = document.getElementById('contact-form');
