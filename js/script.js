@@ -5,7 +5,7 @@
   // En local, l'API tourne sur le port 5000.
   // En ligne : remplace VOTRE-API par l'adresse de ton API déployée (étape de déploiement).
   const LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);
-  const API_URL = LOCAL ? 'http://localhost:5000/api' : 'https://VOTRE-API.onrender.com/api';
+  const API_URL = LOCAL ? 'http://localhost:5000/api' : 'https://portfolio-api-v8k8.onrender.com/api';
   const API_READY = !API_URL.includes('VOTRE-API');
 
   async function apiFetch(path, options = {}, timeout = 15000) {
