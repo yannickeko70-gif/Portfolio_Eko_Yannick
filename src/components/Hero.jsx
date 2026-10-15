@@ -19,7 +19,7 @@ export default function Hero() {
             <a className="btn btn-solid" href="#projets">Voir mes projets</a>
             <a
               className="btn"
-              href="/doc/CV-Yannick-EKO.pdf"
+              href="/doc/CV_-_Yannick_EKO.pdf"
               download
               onClick={() => trackEvent('cv', 'cv')}
             >
