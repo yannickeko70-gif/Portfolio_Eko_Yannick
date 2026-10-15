@@ -2,7 +2,7 @@
 // category : 'web' | 'mobile' | 'desktop' | 'gaming' (chaîne, ou tableau si plusieurs)
 // status : 'termine' | 'en_cours'
 // image : liens Cloudinary (identiques à ceux de la base)
-window.PROJECTS = [
+export default [
   {
     title: 'CyberTrack',
     description: 'Application web sécurisée de signalement de contenus illégaux, avec gestion des rôles et suivi des signalements.',
