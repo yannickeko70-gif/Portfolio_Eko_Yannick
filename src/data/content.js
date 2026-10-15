@@ -121,6 +121,16 @@ export const SUBJECTS = [
   'Autre',
 ];
 
+// Catégories de compétences : clé de l'admin → titre et icône du portfolio
+export const SKILL_CATEGORIES = [
+  { key: 'web', title: 'Web', icon: 'code' },
+  { key: 'frameworks', title: 'Frameworks', icon: 'layers', ai: true },
+  { key: 'mobile', title: 'Mobile', icon: 'phone', ai: true },
+  { key: 'desktop', title: 'Desktop et jeu', icon: 'monitor' },
+  { key: 'data', title: 'Données', icon: 'database' },
+  { key: 'tools', title: 'Outils', icon: 'wrench' },
+];
+
 export const LINKS = {
   github: 'https://github.com/yannickeko70-gif',
   linkedin: 'https://www.linkedin.com/in/yannick-eko-3a2152409',
