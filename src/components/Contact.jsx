@@ -53,7 +53,7 @@ export default function Contact() {
         <div className="contact">
           <ul className="contact-list">
             <li><span>Email</span><a href={`mailto:${LINKS.email}`}>{LINKS.email}</a></li>
-            <li><span>Téléphone</span><a href="tel:+237655504397">+237 655 50 43 97</a></li>
+            <li><span>Téléphone</span><a href="tel:+237655504397">655 50 43 97</a></li>
             <li>
               <span>WhatsApp</span>
               <a href="https://wa.me/237655504397" target="_blank" rel="noopener noreferrer">

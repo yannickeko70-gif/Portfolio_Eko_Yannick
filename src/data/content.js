@@ -3,12 +3,13 @@ export const NAV = [
   ['competences', 'Compétences'],
   ['projets', 'Projets'],
   ['formation', 'Formation'],
+  ['certifications', 'Certifications'],
   ['objectifs', 'Objectifs'],
 ];
 
 // Toutes les sections suivies (menu actif + statistiques)
 export const SECTION_IDS = [
-  'apropos', 'services', 'competences', 'projets', 'formation', 'objectifs', 'contact',
+  'apropos', 'services', 'competences', 'projets', 'formation', 'certifications', 'objectifs', 'contact',
 ];
 
 export const FACTS = [

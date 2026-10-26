@@ -14,6 +14,7 @@ import { SECTION_IDS } from './data/content.js';
 import { useActiveSection } from './hooks/useActiveSection.js';
 import { useSectionTracking } from './hooks/useSectionTracking.js';
 import { trackVisit } from './api.js';
+import Certifications from './components/Certifications.jsx';
 
 export default function App() {
   const active = useActiveSection(SECTION_IDS);
@@ -33,6 +34,7 @@ export default function App() {
         <Skills />
         <Projects />
         <Education />
+        <Certifications />
         <Goals />
         <Contact />
       </main>
