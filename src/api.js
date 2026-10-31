@@ -5,7 +5,7 @@ const LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);
 
 export const API_URL =
   import.meta.env.VITE_API_URL ||
-  (LOCAL ? 'http://localhost:5000/api' : 'https://portfolio-api-v8k8.onrender.com/api');
+  (LOCAL ? 'http://localhost:5000/api' : 'https://backoffice-portfolio-admin-backend.vercel.app/api');
 
 export const API_READY = !API_URL.includes('VOTRE-API');
 
