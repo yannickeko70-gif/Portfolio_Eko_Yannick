@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { NAV } from '../data/content.js';
 import { THEMES, useTheme } from '../hooks/useTheme.js';
+import { useProfile, initials } from '../hooks/useProfile.js';
 
 export default function Header({ active }) {
   const [theme, setTheme] = useTheme();
+  const profile = useProfile();
   const [open, setOpen] = useState(false);
   const headerRef = useRef(null);
   const burgerRef = useRef(null);
@@ -40,7 +42,7 @@ export default function Header({ active }) {
     <header className="site-header" ref={headerRef}>
       <div className="wrap bar">
         <a className="brand" href="#top">
-          <span className="mark" aria-hidden="true">EY</span>Eko Yannick
+          <span className="mark" aria-hidden="true">{initials(profile)}</span>{profile.first_name} {profile.last_name}
         </a>
 
         <nav className="nav" aria-label="Navigation principale">

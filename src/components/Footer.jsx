@@ -1,14 +1,16 @@
-import { LINKS } from '../data/content.js';
+import { useProfile } from '../hooks/useProfile.js';
 
 export default function Footer() {
+  const p = useProfile();
+
   return (
     <footer className="site-footer">
       <div className="wrap">
-        <p>© 2026 Eko Yannick</p>
+        <p>© {new Date().getFullYear()} {p.first_name} {p.last_name}</p>
         <nav aria-label="Liens externes">
-          <a href={LINKS.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href={`mailto:${LINKS.email}`}>Email</a>
+          {p.github && <a href={p.github} target="_blank" rel="noopener noreferrer">GitHub</a>}
+          {p.linkedin && <a href={p.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
+          <a href={`mailto:${p.email}`}>Email</a>
         </nav>
       </div>
     </footer>

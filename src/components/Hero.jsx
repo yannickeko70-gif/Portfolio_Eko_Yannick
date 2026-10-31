@@ -1,25 +1,23 @@
 import { Icon } from './Icons.jsx';
-import { LINKS } from '../data/content.js';
+import { useProfile, photoSrc, cvHref } from '../hooks/useProfile.js';
 import { trackEvent } from '../api.js';
 
 export default function Hero() {
+  const p = useProfile();
+
   return (
     <section className="hero" id="top">
       <div className="wrap hero-grid">
         <div className="hero-text">
-          <p className="status">Disponible pour toute opportunité</p>
-          <h1><span>Eko</span> <span>Yannick</span></h1>
-          <p className="role">Concepteur / Développeur FullStack / Designeur UX/UI</p>
-          <p className="lead">
-            Étudiant en Bachelor Conception et Développement Web FullStack (CDWFS) à l'Institut
-            Universitaire de la Côte, à Douala. Je conçois des applications web, des outils desktop
-            et des jeux vidéo.
-          </p>
+          {p.availability && <p className="status">{p.availability}</p>}
+          <h1><span>{p.first_name}</span> <span>{p.last_name}</span></h1>
+          <p className="role">{p.role}</p>
+          <p className="lead">{p.lead}</p>
           <div className="actions">
             <a className="btn btn-solid" href="#projets">Voir mes projets</a>
             <a
               className="btn"
-              href="/doc/CV EKO YANNICK.pdf"
+              href={cvHref(p)}
               download
               onClick={() => trackEvent('cv', 'cv')}
             >
@@ -27,21 +25,25 @@ export default function Hero() {
             </a>
           </div>
           <ul className="hero-links">
-            <li>
-              <a href={LINKS.github} target="_blank" rel="noopener noreferrer">
-                GitHub <Icon name="arrow" size={14} />
-              </a>
-            </li>
-            <li>
-              <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">
-                LinkedIn <Icon name="arrow" size={14} />
-              </a>
-            </li>
-            <li><a href={`mailto:${LINKS.email}`}>Email</a></li>
+            {p.github && (
+              <li>
+                <a href={p.github} target="_blank" rel="noopener noreferrer">
+                  GitHub <Icon name="arrow" size={14} />
+                </a>
+              </li>
+            )}
+            {p.linkedin && (
+              <li>
+                <a href={p.linkedin} target="_blank" rel="noopener noreferrer">
+                  LinkedIn <Icon name="arrow" size={14} />
+                </a>
+              </li>
+            )}
+            <li><a href={`mailto:${p.email}`}>Email</a></li>
           </ul>
         </div>
         <figure className="portrait">
-          <img src="/img/yannick_eko.PNG" alt="Portrait d'Eko Yannick" width="1023" height="1537" />
+          <img src={photoSrc(p)} alt={`Portrait de ${p.first_name} ${p.last_name}`} width="1023" height="1537" />
         </figure>
       </div>
     </section>

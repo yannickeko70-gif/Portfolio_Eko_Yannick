@@ -1,23 +1,33 @@
-import { FACTS } from '../data/content.js';
+import { useProfile } from '../hooks/useProfile.js';
 
 export default function About() {
+  const p = useProfile();
+
+  const facts = [
+    ['Localisation', p.location],
+    ['Études', p.studies],
+    ['Langues', p.languages],
+    ["Centres d'intérêt", p.interests],
+  ].filter(([, value]) => value);
+
+  // Une ligne vide dans le texte du back office = nouveau paragraphe
+  const paragraphs = p.about.split(/\n{2,}/).filter((t) => t.trim());
+
   return (
     <section className="section alt" id="apropos">
       <div className="wrap split">
         <h2>À propos</h2>
         <div className="about">
-          <p>
-            Titulaire d'un DEC canadien en Programmation et applications mobiles, je poursuis un
-            Bachelor Bac+3 en développement web FullStack. J'aime concevoir des interfaces claires
-            et construire des applications complètes, de la maquette jusqu'au déploiement. Je
-            souhaite aussi développer mes compétences en intelligence artificielle pour créer des
-            solutions numériques intelligentes.
-          </p>
-          <dl className="facts">
-            {FACTS.map(([label, value]) => (
-              <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
-            ))}
-          </dl>
+          {paragraphs.map((text, i) => (
+            <p key={i}>{text}</p>
+          ))}
+          {facts.length > 0 && (
+            <dl className="facts">
+              {facts.map(([label, value]) => (
+                <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+              ))}
+            </dl>
+          )}
         </div>
       </div>
     </section>

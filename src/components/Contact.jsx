@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Icon } from './Icons.jsx';
-import { LINKS, SUBJECTS } from '../data/content.js';
+import { SUBJECTS } from '../data/content.js';
+import { useProfile, telHref, waHref, shortUrl } from '../hooks/useProfile.js';
 import { apiFetch, API_READY } from '../api.js';
 
 export default function Contact() {
+  const p = useProfile();
   const [status, setStatus] = useState({ text: '', state: '' });
   const [sending, setSending] = useState(false);
 
@@ -36,7 +38,7 @@ export default function Contact() {
     } catch (err) {
       const network = err instanceof TypeError || err.name === 'AbortError';
       const reason = network ? 'Impossible de joindre le serveur.' : err.message;
-      setStatus({ text: `${reason} Tu peux aussi écrire à ${LINKS.email}.`, state: 'error' });
+      setStatus({ text: `${reason} Tu peux aussi écrire à ${p.email}.`, state: 'error' });
     } finally {
       clearTimeout(slow);
       setSending(false);
@@ -52,27 +54,35 @@ export default function Contact() {
         </p>
         <div className="contact">
           <ul className="contact-list">
-            <li><span>Email</span><a href={`mailto:${LINKS.email}`}>{LINKS.email}</a></li>
-            <li><span>Téléphone</span><a href="tel:+237655504397">655 50 43 97</a></li>
-            <li>
-              <span>WhatsApp</span>
-              <a href="https://wa.me/237655504397" target="_blank" rel="noopener noreferrer">
-                +237 655 50 43 97 <Icon name="arrow" size={14} />
-              </a>
-            </li>
-            <li>
-              <span>GitHub</span>
-              <a href={LINKS.github} target="_blank" rel="noopener noreferrer">
-                github.com/yannickeko70-gif <Icon name="arrow" size={14} />
-              </a>
-            </li>
-            <li>
-              <span>LinkedIn</span>
-              <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">
-                linkedin.com/in/yannick-eko-3a2152409 <Icon name="arrow" size={14} />
-              </a>
-            </li>
-            <li><span>Localisation</span>Douala, Cameroun</li>
+            <li><span>Email</span><a href={`mailto:${p.email}`}>{p.email}</a></li>
+            {p.phone && (
+              <li><span>Téléphone</span><a href={telHref(p.phone)}>{p.phone}</a></li>
+            )}
+            {waHref(p) && (
+              <li>
+                <span>WhatsApp</span>
+                <a href={waHref(p)} target="_blank" rel="noopener noreferrer">
+                  {p.whatsapp || p.phone} <Icon name="arrow" size={14} />
+                </a>
+              </li>
+            )}
+            {p.github && (
+              <li>
+                <span>GitHub</span>
+                <a href={p.github} target="_blank" rel="noopener noreferrer">
+                  {shortUrl(p.github)} <Icon name="arrow" size={14} />
+                </a>
+              </li>
+            )}
+            {p.linkedin && (
+              <li>
+                <span>LinkedIn</span>
+                <a href={p.linkedin} target="_blank" rel="noopener noreferrer">
+                  {shortUrl(p.linkedin)} <Icon name="arrow" size={14} />
+                </a>
+              </li>
+            )}
+            {p.location && <li><span>Localisation</span>{p.location}</li>}
           </ul>
 
           <form className="form panel" id="contact-form" method="post" onSubmit={onSubmit}>
