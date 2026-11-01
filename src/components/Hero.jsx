@@ -1,27 +1,34 @@
 import { Icon } from './Icons.jsx';
 import { useProfile, photoSrc, cvHref } from '../hooks/useProfile.js';
 import { trackEvent } from '../api.js';
+import { useLang } from '../hooks/useLang.js';
+import { STRINGS, pick } from '../i18n/translations.js';
 
 export default function Hero() {
   const p = useProfile();
+  const [lang] = useLang();
+  const tr = STRINGS[lang];
+  const role = pick(lang, p.role, p.role_en);
+  const lead = pick(lang, p.lead, p.lead_en);
+  const availability = pick(lang, p.availability, p.availability_en);
 
   return (
     <section className="hero" id="top">
       <div className="wrap hero-grid">
         <div className="hero-text">
-          {p.availability && <p className="status">{p.availability}</p>}
+          {availability && <p className="status">{availability}</p>}
           <h1><span>{p.first_name}</span> <span>{p.last_name}</span></h1>
-          <p className="role">{p.role}</p>
-          <p className="lead">{p.lead}</p>
+          <p className="role">{role}</p>
+          <p className="lead">{lead}</p>
           <div className="actions">
-            <a className="btn btn-solid" href="#projets">Voir mes projets</a>
+            <a className="btn btn-solid" href="#projets">{tr.heroViewProjects}</a>
             <a
               className="btn"
               href={cvHref(p)}
               download
               onClick={() => trackEvent('cv', 'cv')}
             >
-              Télécharger mon CV
+              {tr.heroDownloadCv}
             </a>
           </div>
           <ul className="hero-links">
@@ -39,7 +46,7 @@ export default function Hero() {
                 </a>
               </li>
             )}
-            <li><a href={`mailto:${p.email}`}>Email</a></li>
+            <li><a href={`mailto:${p.email}`}>{tr.heroEmail}</a></li>
           </ul>
         </div>
         <figure className="portrait">

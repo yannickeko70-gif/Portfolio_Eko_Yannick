@@ -92,6 +92,19 @@ h1, h2, h3 { font-family: var(--ff-head); line-height: 1.1; margin: 0; letter-sp
 .sw-blanc { background: #ffffff; }
 .sw-beige { background: #e9e0cf; }
 
+.langswitch {
+  display: flex; align-items: center; gap: 2px;
+  background: #e9e0cf; border: 1px solid var(--line-strong);
+  border-radius: 999px; padding: 2px;
+}
+.langswitch button {
+  border: none; background: none; border-radius: 999px;
+  padding: 0.2rem 0.55rem; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.02em; color: #0d0d0d; cursor: pointer; line-height: 1.4;
+}
+.langswitch button[aria-pressed="true"] { background: #0d1b2a; color: #ffffff; }
+.menu-lang-list .langswitch { width: fit-content; }
+
 /* ---------- Boutons ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;

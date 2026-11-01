@@ -4,30 +4,21 @@ import localProjects from '../data/projects.js';
 import { normalize, safeUrl } from '../data/normalize.js';
 import { apiFetch, API_READY, trackEvent } from '../api.js';
 import { useReveal } from '../hooks/useReveal.js';
+import { useLang } from '../hooks/useLang.js';
+import { STRINGS, pick } from '../i18n/translations.js';
 
-const FILTERS = [
-  ['all', 'Tous'],
-  ['web', 'Web'],
-  ['mobile', 'Mobile'],
-  ['desktop', 'Desktop'],
-  ['gaming', 'Gaming'],
-];
-
-function ProjectCard({ p, index, featured }) {
+function ProjectCard({ p, index, featured, lang, tr }) {
   const [ref, shown] = useReveal();
   const [imgFailed, setImgFailed] = useState(false);
 
   const live = safeUrl(p.live);
   const repo = safeUrl(p.repo);
-  // La photo ouvre le site en ligne s'il existe, sinon le dépôt GitHub
   const main = live || repo;
-  const mainLabel = live ? 'ouvrir le projet en ligne' : 'ouvrir le dépôt GitHub';
 
   const showImage = p.image && !imgFailed;
   const shotClass = 'shot' + (showImage ? '' : ' shot-empty');
   const track = () => trackEvent('project', p.title);
 
-  // Image introuvable : on affiche le nom du projet au lieu d'une image cassée
   const inner = showImage ? (
     <img
       src={p.image}
@@ -43,9 +34,9 @@ function ProjectCard({ p, index, featured }) {
 
   const badge =
     p.status === 'en_cours' ? (
-      <span className="badge" data-state="wip">En cours</span>
+      <span className="badge" data-state="wip">{tr.badgeWip}</span>
     ) : live ? (
-      <span className="badge" data-state="live">En ligne</span>
+      <span className="badge" data-state="live">{tr.badgeLive}</span>
     ) : null;
 
   return (
@@ -60,7 +51,7 @@ function ProjectCard({ p, index, featured }) {
           href={main}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${p.title} : ${mainLabel}`}
+          aria-label={`${p.title} : ${live ? tr.openLiveAria : tr.openRepoAria}`}
           onClick={track}
         >
           {inner}
@@ -71,22 +62,22 @@ function ProjectCard({ p, index, featured }) {
 
       <div className="project-body">
         <div className="project-head"><h3>{p.title}</h3>{badge}</div>
-        <p className="desc">{p.description}</p>
+        <p className="desc">{pick(lang, p.description, p.description_en)}</p>
         <ul className="chips">
           {p.stack.map((s) => <li key={s}>{s}</li>)}
         </ul>
         <div className="project-links">
           {live && (
             <a className="project-link" href={live} target="_blank" rel="noopener noreferrer" onClick={track}>
-              Voir le projet en ligne <Icon name="arrow" size={14} />
+              {tr.viewLiveProject} <Icon name="arrow" size={14} />
             </a>
           )}
           {repo && (
             <a className="project-link" href={repo} target="_blank" rel="noopener noreferrer" onClick={track}>
-              Voir le code sur GitHub <Icon name="arrow" size={14} />
+              {tr.viewRepo} <Icon name="arrow" size={14} />
             </a>
           )}
-          {!live && !repo && <span className="project-link is-missing">Lien bientôt disponible</span>}
+          {!live && !repo && <span className="project-link is-missing">{tr.linkSoon}</span>}
         </div>
       </div>
     </article>
@@ -94,9 +85,12 @@ function ProjectCard({ p, index, featured }) {
 }
 
 export default function Projects() {
-  // Affichage immédiat avec projects.js ; l'API du back office prend le relais ensuite
   const [projects, setProjects] = useState(() => localProjects.map(normalize));
   const [current, setCurrent] = useState('all');
+  const [lang] = useLang();
+  const tr = STRINGS[lang];
+
+  const FILTERS = ['all', 'web', 'mobile', 'desktop', 'gaming'].map((k) => [k, tr.filters[k]]);
 
   useEffect(() => {
     if (!API_READY) return;
@@ -107,10 +101,8 @@ export default function Projects() {
         const data = await apiFetch('/public/projects');
         if (cancelled || !Array.isArray(data) || data.length === 0) return;
         const fresh = data.map(normalize);
-        // On ne remplace que si la liste est différente
         setProjects((prev) => (JSON.stringify(prev) === JSON.stringify(fresh) ? prev : fresh));
       } catch (err) {
-        // API éteinte ou lente : on garde projects.js
         console.warn('[portfolio] API indisponible, projets locaux conservés.', err.message);
       }
     })();
@@ -126,10 +118,8 @@ export default function Projects() {
   return (
     <section className="section" id="projets">
       <div className="wrap">
-        <h2>Projets</h2>
-        <p className="section-intro">
-          Une sélection de projets académiques et personnels : applications web, outils desktop et jeux vidéo.
-        </p>
+        <h2>{tr.projectsTitle}</h2>
+        <p className="section-intro">{tr.projectsIntro}</p>
 
         <div className="filters" role="group" aria-label="Filtrer les projets">
           {FILTERS.map(([key, label]) => (
@@ -142,12 +132,13 @@ export default function Projects() {
         <div className="projects" aria-live="polite">
           {list.length ? (
             list.map((p, i) => (
-              // La clé change avec le filtre : les cartes réapparaissent à chaque changement
               <ProjectCard
                 key={`${current}-${p.title}`}
                 p={p}
                 index={i}
                 featured={current === 'all' && i === 0}
+                lang={lang}
+                tr={tr}
               />
             ))
           ) : (
@@ -158,10 +149,10 @@ export default function Projects() {
                   <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
                 </svg>
               </span>
-              <h3>Aucun projet dans cette catégorie pour le moment</h3>
-              <p>Je travaille dessus. En attendant, tu peux parcourir tous mes projets.</p>
+              <h3>{tr.noProjectsInCategory}</h3>
+              <p>{tr.noProjectsText}</p>
               <button className="btn btn-sm" type="button" onClick={() => setCurrent('all')}>
-                Voir tous les projets
+                {tr.viewAllProjects}
               </button>
             </div>
           )}

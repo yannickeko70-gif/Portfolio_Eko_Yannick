@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Icon } from './Icons.jsx';
 import { apiFetch, API_READY } from '../api.js';
+import { useLang } from '../hooks/useLang.js';
+import { STRINGS, pick } from '../i18n/translations.js';
 
 // Valeurs de secours : affichées si l'API est lente ou éteinte.
 const FALLBACK = [
@@ -28,6 +30,8 @@ const safeUrl = (u) => (/^https?:\/\//i.test(u || '') ? u : '');
 
 export default function Certifications() {
   const [items, setItems] = useState(FALLBACK);
+  const [lang] = useLang();
+  const tr = STRINGS[lang];
 
   useEffect(() => {
     if (!API_READY) return undefined;
@@ -40,12 +44,12 @@ export default function Certifications() {
         setItems(
           rows.map((r) => ({
             id: r.id,
-            title: r.title,
-            issuer: r.issuer || '',
+            title: pick(lang, r.title, r.title_en),
+            issuer: pick(lang, r.issuer, r.issuer_en),
             date: r.date_label || '',
             image: imagePath(r.image),
             url: safeUrl(r.url),
-            description: r.description || '',
+            description: pick(lang, r.description, r.description_en),
           }))
         );
       } catch (err) {
@@ -54,19 +58,19 @@ export default function Certifications() {
     })();
 
     return () => { cancelled = true; };
-  }, []);
+  }, [lang]);
 
   return (
     <section className="section" id="certifications">
       <div className="wrap">
-        <h2>Certifications</h2>
+        <h2>{tr.certificationsTitle}</h2>
 
         <p className="section-intro">
-          Formations et certifications obtenues en complément de mon cursus.
+          {tr.certificationsIntro}
         </p>
 
         {items.length === 0 ? (
-          <p className="muted">De nouvelles certifications arrivent bientôt.</p>
+          <p className="muted">{tr.noCertifications}</p>
         ) : (
           <div className="certs">
             {items.map((c) => {
@@ -100,7 +104,7 @@ export default function Certifications() {
 
                     {c.url && (
                       <a className="project-link" href={c.url} target="_blank" rel="noopener noreferrer">
-                        Vérifier la certification
+                        {tr.verifyCertification}
                         <Icon name="arrow" size={14} />
                       </a>
                     )}
