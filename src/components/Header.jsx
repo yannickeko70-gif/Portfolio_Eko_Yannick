@@ -5,7 +5,8 @@ import { STRINGS } from '../i18n/translations.js';
 import { useProfile, initials } from '../hooks/useProfile.js';
 import LangSwitch from './LangSwitch.jsx';
 
-const NAV_IDS = ['apropos', 'competences', 'projets', 'formation', 'certifications', 'objectifs'];
+// « Objectifs » n'est plus dans le menu (la section reste sur la page)
+const NAV_IDS = ['apropos', 'competences', 'projets', 'formation', 'certifications'];
 
 export default function Header({ active }) {
   const [theme, setTheme] = useTheme();
