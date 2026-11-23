@@ -34,9 +34,18 @@ export const STRINGS = {
     ],
 
     skillsTitle: 'Compétences',
-    skillsIntro: "Les langages, frameworks et outils que j'utilise pour concevoir et livrer mes projets.",
+    skillsIntro: "Les langages, frameworks et outils que j'utilise pour concevoir et livrer mes projets. Choisis une catégorie pour filtrer.",
     withAi: "Avec l'IA",
-    skillCategories: { web: 'Web', frameworks: 'Frameworks', mobile: 'Mobile', desktop: 'Desktop et jeu', data: 'Données', tools: 'Outils' },
+    allSkills: 'Toutes',
+    filterSkills: 'Filtrer les compétences',
+    noSkillsInCategory: 'Aucune compétence dans cette catégorie pour le moment.',
+    viewAllSkills: 'Voir toutes les compétences',
+    skillCategories: {
+      web_languages: 'Langages et bases du web', web_frontend: 'Frameworks frontend',
+      web_backend: 'Frameworks et technologies backend', mobile: 'Mobile', versioning: 'Versionning',
+      desktop: 'Desktop', gaming: 'Jeu vidéo', data: 'Données', ide_tools: 'IDE et outils',
+      project_management: 'Gestion de projet',
+    },
 
     projectsTitle: 'Projets',
     projectsIntro: 'Une sélection de projets académiques et personnels : applications web, outils desktop et jeux vidéo.',
@@ -110,9 +119,18 @@ export const STRINGS = {
     ],
 
     skillsTitle: 'Skills',
-    skillsIntro: 'The languages, frameworks and tools I use to design and deliver my projects.',
+    skillsIntro: 'The languages, frameworks and tools I use to design and deliver my projects. Choose a category to filter.',
     withAi: 'With AI',
-    skillCategories: { web: 'Web', frameworks: 'Frameworks', mobile: 'Mobile', desktop: 'Desktop & gaming', data: 'Data', tools: 'Tools' },
+    allSkills: 'All',
+    filterSkills: 'Filter skills',
+    noSkillsInCategory: 'There are no skills in this category yet.',
+    viewAllSkills: 'View all skills',
+    skillCategories: {
+      web_languages: 'Web languages and fundamentals', web_frontend: 'Frontend frameworks',
+      web_backend: 'Backend frameworks and technologies', mobile: 'Mobile', versioning: 'Version control',
+      desktop: 'Desktop', gaming: 'Video games', data: 'Data', ide_tools: 'IDEs and tools',
+      project_management: 'Project management',
+    },
 
     projectsTitle: 'Projects',
     projectsIntro: 'A selection of academic and personal projects: web apps, desktop tools and video games.',

@@ -47,18 +47,16 @@ export const SERVICES = [
 ];
 
 export const SKILLS = [
-  { icon: 'code', title: 'Web', items: ['HTML5', 'CSS3', 'JavaScript', 'PHP'] },
-  {
-    icon: 'layers', title: 'Frameworks', ai: true,
-    items: ['React', 'Next.js', 'NestJS', 'Laravel', 'Tailwind CSS', 'Node.js', 'Django', 'Angular'],
-  },
-  { icon: 'phone', title: 'Mobile', ai: true, items: ['React Native'] },
-  { icon: 'monitor', title: 'Desktop et jeu', items: ['C# (ASP.NET, ADO.NET)', 'Java', 'C', 'Unity'] },
-  { icon: 'database', title: 'Données', items: ['SQL', 'MySQL', 'PostgreSQL', 'SQL Server'] },
-  {
-    icon: 'wrench', title: 'Outils',
-    items: ['VS Code', 'Visual Studio', 'NetBeans', 'Android Studio', 'Figma', 'Git et GitHub', 'Docker'],
-  },
+  { icon: 'code', key: 'web_languages', items: ['HTML5', 'CSS3', 'JavaScript', 'PHP'] },
+  { icon: 'layers', key: 'web_frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'Angular'] },
+  { icon: 'code', key: 'web_backend', items: ['NestJS', 'Laravel', 'Node.js', 'Django'] },
+  { icon: 'phone', key: 'mobile', items: ['React Native'] },
+  { icon: 'layers', key: 'versioning', items: ['Git', 'GitHub'] },
+  { icon: 'monitor', key: 'desktop', items: ['C#', 'Java'] },
+  { icon: 'gamepad', key: 'gaming', items: ['Unity'] },
+  { icon: 'database', key: 'data', items: ['SQL', 'MySQL', 'PostgreSQL', 'SQL Server'] },
+  { icon: 'wrench', key: 'ide_tools', items: ['VS Code', 'Visual Studio', 'NetBeans', 'Android Studio', 'Figma', 'Docker'] },
+  { icon: 'layers', key: 'project_management', items: [] },
 ];
 
 export const EDUCATION = [
@@ -124,12 +122,16 @@ export const SUBJECTS = [
 
 // Catégories de compétences : clé de l'admin → titre et icône du portfolio
 export const SKILL_CATEGORIES = [
-  { key: 'web', title: 'Web', icon: 'code' },
-  { key: 'frameworks', title: 'Frameworks', icon: 'layers', ai: true },
-  { key: 'mobile', title: 'Mobile', icon: 'phone', ai: true },
-  { key: 'desktop', title: 'Desktop et jeu', icon: 'monitor' },
+  { key: 'web_languages', title: 'Langages et bases du web', icon: 'code' },
+  { key: 'web_frontend', title: 'Frameworks frontend', icon: 'layers' },
+  { key: 'web_backend', title: 'Frameworks et technologies backend', icon: 'code' },
+  { key: 'mobile', title: 'Mobile', icon: 'phone' },
+  { key: 'versioning', title: 'Versionning', icon: 'layers' },
+  { key: 'desktop', title: 'Desktop', icon: 'monitor' },
+  { key: 'gaming', title: 'Jeu vidéo', icon: 'gamepad' },
   { key: 'data', title: 'Données', icon: 'database' },
-  { key: 'tools', title: 'Outils', icon: 'wrench' },
+  { key: 'ide_tools', title: 'IDE et outils', icon: 'wrench' },
+  { key: 'project_management', title: 'Gestion de projet', icon: 'layers' },
 ];
 
 export const LINKS = {
